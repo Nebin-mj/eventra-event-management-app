@@ -2,7 +2,13 @@
 <div class="d-flex flex-wrap justify-content-around w-100">
    {{#if oncommingEvents}}
       {{#each oncommingEvents}}
-         <div class="col m-4" style="min-width: 40%;">
+         <div class="col m-4 position-relative" style="min-width: 40%;">
+            {{#if @root.isAuthenticated}}
+               <a class="bg-primary d-flex justify-content-center align-items-center"
+                  style="height: 2rem; width: 2rem; border-radius: 50%;position: absolute; top:-0.5rem; right: -0.5rem; z-index: 10; color: white;"
+                  href="/event/edit/{{this._id}}">{{>edit}}
+               </a>
+            {{/if}}
             <div class="card shadow">
                <img
                   src="{{this.bannerImage}}"
@@ -28,7 +34,13 @@
 <div class="d-flex flex-wrap justify-content-around w-100">
    {{#if pastEvents}}
       {{#each pastEvents}}
-         <div class="col m-4" style="min-width: 40%;">
+         <div class="col m-4 position-relative" style="min-width: 40%;">
+            {{#if @root.isAuthenticated}}
+               <a class="bg-primary d-flex justify-content-center align-items-center"
+                  style="height: 2rem; width: 2rem; border-radius: 50%;position: absolute; top:-0.5rem; right: -0.5rem; z-index: 10; color: white;"
+                  href="/event/edit/{{this._id}}">{{>edit}}
+               </a>
+            {{/if}}
             <div class="card shadow">
                <img
                   src="{{this.bannerImage}}"

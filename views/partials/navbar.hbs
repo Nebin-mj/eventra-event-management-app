@@ -27,15 +27,6 @@
                   active
                {{/if}}" aria-current="page" href="/event/add">Add Event</a>
             </li>
-            {{#if isAuthenticated}}
-               <li class="nav-item">
-                  <a class="nav-link
-               {{#if (eq title "Dashboard")}}
-                  active
-               {{/if}}
-               " href="/user/dashboard">Dashboard</a>
-               </li>
-            {{/if}}
             {{#unless isAuthenticated}}
                <li class="nav-item">
                   <a class="nav-link

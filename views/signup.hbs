@@ -1,0 +1,44 @@
+<form action="/signup" method="POST" class="card p-3 shadow col-12 col-sm-10 col-lg-6">
+   <h2 class="text-center">Sign Up</h2>
+   {{>alert}}
+   <div class="form-outline mb-4">
+      <label class="form-label" for="name">Name</label>
+      <input name="name" type="text" id="name" value="{{name}}" class="form-control" />
+   </div>
+   <!-- Email input -->
+   <div class="form-outline mb-4">
+      <label class="form-label" for="email">Email address</label>
+      <input name="email" type="email" id="email" value="{{email}}" class="form-control" />
+   </div>
+
+   <!-- Password input -->
+   <div class="form-outline mb-4">
+      <label class="form-label" for="password1">Password</label>
+      <input
+         name="password1"
+         type="password"
+         id="password1"
+         value="{{password1}}"
+         class="form-control"
+      />
+   </div>
+   <div class="form-outline mb-4">
+      <label class="form-label" for="password2">Reenter Password</label>
+      <input
+         name="password2"
+         type="password"
+         id="password2"
+         value="{{password2}}"
+         class="form-control"
+      />
+   </div>
+   <!-- Submit button -->
+   <div class="d-grid gap-2">
+      <button type="submit" class="btn btn-primary shadow">Sign Up</button>
+   </div>
+
+   <!-- Sign Up button -->
+   <div class="text-center">
+      <p>Already have an account?<a href="/login">Login</a></p>
+   </div>
+</form>

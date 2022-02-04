@@ -1,0 +1,24 @@
+<!-- Background image -->
+<div
+   class="text-center bg-image"
+   style="
+      background-image: url('{{#if eventName}}{{bannerImage}}{{else}}/headway-F2KRf_QfCqw-unsplash(1).jpg{{/if}}');
+      height: 400px;
+      background-size: cover;
+      background-repeat: no-repeat;
+    "
+>
+   <div class="mask" style="background-color: rgba(0, 0, 0, 0.6);">
+      <div class="d-flex justify-content-center align-items-center h-100">
+         <div class="text-white">
+            {{#if eventName}}
+               <h1 class="mb-3">{{name}}</h1>
+            {{else}}
+               <h1 class="mb-3">Eventra</h1>
+               <h3>IEEE AJCE Event Management Hub.</h3>
+            {{/if}}
+         </div>
+      </div>
+   </div>
+</div>
+<!-- Background image -->

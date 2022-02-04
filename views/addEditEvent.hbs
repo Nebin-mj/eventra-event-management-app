@@ -1,0 +1,88 @@
+<form 
+   action={{#if (eq title "Add Event")}} "/event/add" {{else}} "/event/edit/{{this._id}}" {{/if}} 
+   method="POST"
+   enctype="multipart/form-data" class="w-100 card p-3 shadow" id="event-form"
+>
+   <h2 class="text-center">{{title}}</h2>
+   {{>alert}}
+   <div class="mb-3">
+      <label for="bannerImage" class="form-control">Banner Image</label>
+      <input type="file" name="bannerImage" id="bannerImage" class="form-control mb-3">
+      <img 
+         src="{{bannerImage}}" 
+         id="bannerImageDisplay"
+         class="w-100" 
+         style="height: 40vh; object-fit: cover;{{#unless bannerImage}}display: none;{{/unless}}"
+         alt="no network" 
+      />
+   </div>
+   <div class="mb-3">
+      <label for="fullImage" class="form-control p-3">
+         Full Image <sub>(image to be displayed without any content getting hidden)</sub>
+      </label>
+      <input type="file" name="fullImage" id="fullImage" class="form-control mb-3">
+      <img 
+         src="{{fullImage}}" 
+         id="fullImageDisplay"
+         class="w-100" 
+         style="height: full; object-fit: contain;{{#unless fullImage}}display: none;{{/unless}}"
+         alt="no network" 
+      />
+   </div>
+   <div class="mb-3">
+      <label for="name" class="form-label">Name</label>
+      <input type="text" class="form-control" id="name" value="{{name}}" placeholder="Name" name="name" />
+   </div>
+   <div class="mb-3">
+      <label for="">Visibility</label>
+      <select class="form-select" name="status" aria-label="private or public blog">
+         <option {{#if (eq status "Private")}} selected {{/if}} value="Private">Private</option>
+         <option {{#if (eq status "Public")}} selected {{/if}} value="Public">Public</option>
+      </select>
+   </div>
+   <div class="mb-3 h-auto d-flex flex-column justify-content-around">
+      <label for="time" class="form-label">Date And Time <sub>(FORMAT: MM-DD-YYYY HH:MM AM)</sub></label>
+      <input type="text" class="form-control" id="time" value="{{time}}" placeholder="Date And Time" name="time" />
+   </div>
+   <div class="mb-3">
+      <label for="description" class="form-label">Description</label>
+      <input type="hidden" id="description" value="{{description}}" name="description" />
+      <input type="hidden" id="length" name="length" />
+      <div id="editor" style="background-color: #eee; height: 15rem;"></div>
+   </div>
+   <div class="mb-3">
+      <button type="submit" class="btn btn-outline-success me-3">
+         {{#if (eq title "Add Event")}}
+            Save
+         {{else}}
+            Update
+         {{/if}}
+      </button>
+      <button id="cancel" type="button" class="btn btn-outline-danger">Cancel</a>
+   </div>
+</form>
+<script>
+   const cancelBtn = document.querySelector("#cancel");
+   const bannerImageInpt = document.querySelector("#bannerImage");
+   const fullImageInpt = document.querySelector("#fullImage");
+   const bannerImageDisplay = document.querySelector("#bannerImageDisplay");
+   const fullImageDisplay = document.querySelector("#fullImageDisplay");
+
+   bannerImageInpt.addEventListener("change", e => {
+      console.log("bannerImage");
+      if(e.target.files.length == 0) return;
+      bannerImageDisplay.setAttribute("src", URL.createObjectURL(e.target.files[0]));
+      bannerImageDisplay.style.display = "block";
+   });
+
+   fullImageInpt.addEventListener("change", e => {
+      console.log("fullImage");
+      if(e.target.files.length == 0) return;
+      fullImageDisplay.setAttribute("src", URL.createObjectURL(e.target.files[0]));
+      fullImageDisplay.style.display = "block";
+   });
+
+   cancelBtn.addEventListener("click", () => {
+      history.go(-1);
+   });
+</script>

@@ -1,0 +1,61 @@
+<nav 
+   class="navbar navbar-expand-lg w-100 navbar-dark position-absolute top-0 start-0" 
+   style="background-color: transparent;"
+>
+   <div class="container-fluid">
+      <div class="d-flex">
+         <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+         </button>
+         <a class="navbar-brand ms-1 text-white" href="/">
+            <h1>Eventra</h1>
+         </a>
+      </div>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+         <ul class="navbar-nav me-auto mb-2 mb-lg-0 mobile-view">
+            <li class="nav-item">
+               <a class="nav-link 
+               {{#if (eq title "Home")}}
+                  active
+               {{/if}}" aria-current="page" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+               <a class="nav-link 
+               {{#if (eq title "Add Event")}}
+                  active
+               {{/if}}" aria-current="page" href="/event/add">Add Event</a>
+            </li>
+            {{#if isAuthenticated}}
+               <li class="nav-item">
+                  <a class="nav-link
+               {{#if (eq title "Dashboard")}}
+                  active
+               {{/if}}
+               " href="/user/dashboard">Dashboard</a>
+               </li>
+            {{/if}}
+            {{#unless isAuthenticated}}
+               <li class="nav-item">
+                  <a class="nav-link
+                  {{#if (eq title "Login")}}
+                     active
+                  {{/if}}" href="/login">Login</a>
+               </li>
+               <li class="nav-item">
+                  <a class="nav-link
+                  {{#if (eq title "Sign Up")}}
+                     active
+                  {{/if}}" href="/signup">Sign Up</a>
+               </li>
+            {{/unless}}
+            {{#if isAuthenticated}}
+               <li class="nav-item">
+                  <a class="nav-link" href="/logout">Logout</a>
+               </li>
+            {{/if}}
+         </ul>
+      </div>
+   </div>
+</nav>

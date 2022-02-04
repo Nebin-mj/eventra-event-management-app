@@ -1,0 +1,51 @@
+<h2>Oncomming Events</h2>
+<div class="d-flex flex-wrap justify-content-around w-100">
+   {{#if oncommingEvents}}
+      {{#each oncommingEvents}}
+         <div class="col" style="min-width: 40%;">
+            <div class="card shadow">
+               <img
+                  src="{{this.bannerImage}}"
+                  class="card-img-top"
+                  style="height: 15rem; object-fit: cover;"
+                  alt="..."
+               />
+               <div class="card-body">
+                  <h5 class="card-title">{{this.name}}</h5>
+                  <p class="card-text">{{{formatBody this.description}}}</p>
+                  <a class="btn btn-primary" href="/event/{{this._id}}">Know
+                     More</a>
+               </div>
+            </div>
+         </div>
+      {{/each}}
+   {{else}}
+      <span class="lead">No events yet.</span>
+   {{/if}}
+</div>
+<br /><br />
+<h2>Past Events</h2>
+<div class="d-flex flex-wrap justify-content-around w-100">
+   {{#if pastEvents}}
+      {{#each pastEvents}}
+         <div class="col" style="min-width: 40%;">
+            <div class="card shadow">
+               <img
+                  src="{{this.bannerImage}}"
+                  class="card-img-top"
+                  style="height: 15rem; object-fit: cover;"
+                  alt="..."
+               />
+               <div class="card-body">
+                  <h5 class="card-title">{{this.name}}</h5>
+                  <p class="card-text">{{{formatBody this.description}}}</p>
+                  <a class="btn btn-primary" href="/event/{{this._id}}">Know
+                     More</a>
+               </div>
+            </div>
+         </div>
+      {{/each}}
+   {{else}}
+      <span class="lead">No events yet.</span>
+   {{/if}}
+</div>

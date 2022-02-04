@@ -1,0 +1,17 @@
+<div class="w-100 card shadow p-3">
+   <h1 class="text-center">{{eventName}}</h1>
+   <p>Scheduled on: {{formatDate time}}</p>
+   {{{description}}}
+   {{#if fullImage}}
+      <img
+         src="{{fullImage}}"
+         id="fullImageDisplay"
+         class="w-100"
+         style="height: full; object-fit: contain;"
+         alt="no network"
+      />
+   {{/if}}
+</div>
+{{#if isAuthenticated}}
+   {{>floatingEditBtn}}
+{{/if}}

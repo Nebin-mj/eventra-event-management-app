@@ -1,0 +1,137 @@
+{{#if errors}}
+   {{#each errors}}
+      <div
+         class="alert alert-warning alert-dismissible fade show d-flex w-100 shadow"
+         style="padding: 0.4rem 1rem;font-size: .9rem; align-items: center;"
+         role="alert"
+      >
+         <strong>{{this.error}}</strong>
+         <button
+            type="button"
+            class="btn-close ml-1"
+            style="padding:0; right: 0.5rem; top: 50%; transform: translateY(-50%);"
+            data-bs-dismiss="alert"
+            aria-label="Close"
+         ></button>
+      </div>
+   {{/each}}
+{{/if}}
+
+{{#if registeredMsg}}
+   <div
+      class="alert alert-success alert-dismissible fade show d-flex"
+      style="padding: 0.4rem 1rem;font-size: .9rem; align-items: center;"
+      role="alert"
+   >
+      <strong>{{registeredMsg}}</strong>
+      <button
+         type="button"
+         class="btn-close"
+         style="padding:0; right: 0.5rem; top: 50%; transform: translateY(-50%);"
+         data-bs-dismiss="alert"
+         aria-label="Close"
+      ></button>
+   </div>
+{{/if}}
+
+{{#if loginMsg}}
+   <div
+      class="alert alert-warning alert-dismissible fade show d-flex"
+      style="padding: 0.4rem 1rem;font-size: .9rem; align-items: center;"
+      role="alert"
+   >
+      <strong>{{loginMsg}}</strong>
+      <button
+         type="button"
+         class="btn-close"
+         style="padding:0; right: 0.5rem; top: 50%; transform: translateY(-50%);"
+         data-bs-dismiss="alert"
+         aria-label="Close"
+      ></button>
+   </div>
+{{/if}}
+
+{{#if loggedoutMsg}}
+   <div
+      class="alert alert-success alert-dismissible fade show d-flex"
+      style="padding: 0.4rem 1rem;font-size: .9rem; align-items: center;"
+      role="alert"
+   >
+      <strong>{{loggedoutMsg}}</strong>
+      <button
+         type="button"
+         class="btn-close"
+         style="padding:0; right: 0.5rem; top: 50%; transform: translateY(-50%);"
+         data-bs-dismiss="alert"
+         aria-label="Close"
+      ></button>
+   </div>
+{{/if}}
+
+{{#if messages.error}}
+   <div
+      class="alert alert-danger alert-dismissible fade show d-flex"
+      style="padding: 0.4rem 1rem;font-size: .9rem; align-items: center;"
+      role="alert"
+   >
+      <strong>{{messages.error}}</strong>
+      <button
+         type="button"
+         class="btn-close"
+         style="padding:0; right: 0.5rem; top: 50%; transform: translateY(-50%);"
+         data-bs-dismiss="alert"
+         aria-label="Close"
+      ></button>
+   </div>
+{{/if}}
+
+{{#if messages.success}}
+   <div
+      class="alert alert-success alert-dismissible fade show d-flex col-12"
+      style="padding: 0.4rem 1rem;font-size: .9rem; align-items: center;"
+      role="alert"
+   >
+      <strong>{{messages.success}}</strong>
+      <button
+         type="button"
+         class="btn-close"
+         style="padding:0; right: 0.5rem; top: 50%; transform: translateY(-50%);"
+         data-bs-dismiss="alert"
+         aria-label="Close"
+      ></button>
+   </div>
+{{/if}}
+
+{{#if loggedinMsg}}
+   <div
+      class="alert alert-warning alert-dismissible fade show d-flex col-12"
+      style="padding: 0.4rem 1rem;font-size: .9rem; align-items: center;"
+      role="alert"
+   >
+      <strong>{{loggedinMsg}}</strong>
+      <button
+         type="button"
+         class="btn-close"
+         style="padding:0; right: 0.5rem; top: 50%; transform: translateY(-50%);"
+         data-bs-dismiss="alert"
+         aria-label="Close"
+      ></button>
+   </div>
+{{/if}}
+
+{{#if notOwnerMsg}}
+   <div
+      class="alert alert-danger alert-dismissible fade show d-flex w-100"
+      style="padding: 0.4rem 1rem;font-size: .9rem; align-items: center;"
+      role="alert"
+   >
+      <strong>{{notOwnerMsg}}</strong>
+      <button
+         type="button"
+         class="btn-close"
+         style="padding:0; right: 0.5rem; top: 50%; transform: translateY(-50%);"
+         data-bs-dismiss="alert"
+         aria-label="Close"
+      ></button>
+   </div>
+{{/if}}

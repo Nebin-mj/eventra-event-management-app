@@ -7,7 +7,7 @@ router.get("/", async (req, res, next) => {
    try {
       const currentDate = new Date();
       const oncommingEvents = await eventModel
-         .find({ time: { $gte: currentDate } })
+         .find({ time: { $gte: currentDate }, status: "Public" })
          .sort({ time: "desc" })
          .lean();
       const pastEvents = await eventModel

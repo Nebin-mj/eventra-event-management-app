@@ -3,7 +3,7 @@ const upload = require("../config/multer.js");
 const eventModel = require("../models/event.js");
 const serverError = require("../config/serverError.js");
 const { setPrevDetails } = require("../middlewares/flash-setup.js");
-const { isAuthenticated } = require("../middlewares/auth.js");
+const { isAuthenticated, isPublic } = require("../middlewares/auth.js");
 const isValidMongooseId = require("../middlewares/mongooseIdCheck.js");
 
 const router = express.Router();
@@ -15,10 +15,9 @@ router.get("/add", isAuthenticated, setPrevDetails, (req, res) => {
    });
 });
 
-router.get("/:id", isValidMongooseId, async (req, res, next) => {
+router.get("/:id", isValidMongooseId, isPublic, (req, res, next) => {
    try {
-      const event = await eventModel.findById(req.params.id).lean();
-      if (event == null) throw new serverError(404, "Event not found.");
+      const event = req.event;
       res.render("event", {
          title: event.name,
          ...event,
@@ -29,24 +28,29 @@ router.get("/:id", isValidMongooseId, async (req, res, next) => {
    }
 });
 
-router.get("/edit/:id", isValidMongooseId, async (req, res, next) => {
-   try {
-      const event = await eventModel.findById(req.params.id).lean();
-      if (event == null) {
-         throw new serverError(
-            404,
-            "The event you are trying to edit not found."
-         );
+router.get(
+   "/edit/:id",
+   isValidMongooseId,
+   isAuthenticated,
+   async (req, res, next) => {
+      try {
+         const event = await eventModel.findById(req.params.id).lean();
+         if (event == null) {
+            throw new serverError(
+               404,
+               "The event you are trying to edit not found."
+            );
+         }
+         res.render("addEditEvent", {
+            layout: "editor",
+            title: "Edit Event",
+            ...event,
+         });
+      } catch (err) {
+         next(err);
       }
-      res.render("addEditEvent", {
-         layout: "editor",
-         title: "Edit Event",
-         ...event,
-      });
-   } catch (err) {
-      next(err);
    }
-});
+);
 
 router.post(
    "/add",
@@ -164,6 +168,7 @@ router.post(
          event.name = name;
          event.time = time;
          event.description = description;
+         event.status = status;
          event.lastUpdatedBy = req.user.id;
          event.bannerImage = req.bannerImage
             ? `/images/${req.bannerImage}`

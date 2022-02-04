@@ -9,6 +9,11 @@ const schema = new mongoose.Schema({
       type: String,
       required: true,
    },
+   status: {
+      type: String,
+      enum: ["Public", "Private"],
+      required: true,
+   },
    bannerImage: {
       type: String,
       required: true,
